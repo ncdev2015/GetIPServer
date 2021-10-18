@@ -11,7 +11,17 @@ namespace GetIPServer.Controllers
         // GET: GetIPServer
         public string Index()
         {
-            return Server.MachineName + "<br>" + Request.ServerVariables["LOCAL_ADDR"];
+            string str = "";
+
+            str += "MachineName: " + Server.MachineName;
+            str += "<br>";
+            str += "IPServer:" + Request.ServerVariables["LOCAL_ADDR"];
+            str += "<br><br>";
+            str += "ServerName: " + System.Web.HttpContext.Current.Request.ServerVariables["SERVER_NAME"];
+            str += "<br>";
+            str += "IPServer: " + System.Web.HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
+
+            return str;
         }
     }
 }

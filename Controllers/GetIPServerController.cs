@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace GetIPServer.Controllers
 {
@@ -20,6 +21,10 @@ namespace GetIPServer.Controllers
             str += "ServerName: " + System.Web.HttpContext.Current.Request.ServerVariables["SERVER_NAME"];
             str += "<br>";
             str += "IPServer: " + System.Web.HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
+            str += "<br><br>";
+            str += "HostName: " + Dns.GetHostName();
+            str += "<br>";
+            str += "IPServer: " + Dns.GetHostAddresses(Dns.GetHostName())[0].ToString();
 
             return str;
         }

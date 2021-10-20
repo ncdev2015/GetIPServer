@@ -25,6 +25,8 @@ namespace GetIPServer.Controllers
             str += "HostName: " + Dns.GetHostName();
             str += "<br>";
             str += "IPServer: " + Dns.GetHostAddresses(Dns.GetHostName())[0].ToString();
+            str += "<br><br>";
+            str += "IPServer: " + Dns.GetHostAddresses(Dns.GetHostName())[Dns.GetHostAddresses(Dns.GetHostName()).Length - 1].ToString(); // Local IP
 
             return str;
         }

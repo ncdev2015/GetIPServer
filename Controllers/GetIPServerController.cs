@@ -14,19 +14,11 @@ namespace GetIPServer.Controllers
         {
             string str = "";
 
-            str += "MachineName: " + Server.MachineName;
-            str += "<br>";
-            str += "IPServer:" + Request.ServerVariables["LOCAL_ADDR"];
-            str += "<br><br>";
-            str += "ServerName: " + System.Web.HttpContext.Current.Request.ServerVariables["SERVER_NAME"];
-            str += "<br>";
-            str += "IPServer: " + System.Web.HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
-            str += "<br><br>";
             str += "HostName: " + Dns.GetHostName();
             str += "<br>";
             str += "IPServer: " + Dns.GetHostAddresses(Dns.GetHostName())[0].ToString();
             str += "<br><br>";
-            str += "IPServer: " + Dns.GetHostAddresses(Dns.GetHostName())[Dns.GetHostAddresses(Dns.GetHostName()).Length - 1].ToString(); // Local IP
+            str += "IPServer: " + Dns.GetHostAddresses(Dns.GetHostName()).Last().ToString(); // Local IP
 
             return str;
         }
